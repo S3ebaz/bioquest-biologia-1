@@ -20,11 +20,16 @@
       </div>
       <span class="badge-off">Sin conexión ✓</span>
     </header>
+
     <section id="home" class="screen active">
       <div class="card hero">
         <div class="fun">🌱 🔬 🧫</div>
         <h2>Entrena tu cerebro celular</h2>
-        <p>Preguntas aleatorias del temario de Biología 1 (unidades 1 a 5). Elige dificultad, responde, aprende del error y guarda la partida cuando quieras. Hay <strong id="n-total">80</strong> preguntas en el banco.</p>
+        <p>
+          Preguntas aleatorias del temario de Biología 1 (unidades 1 a 5).
+          Elige dificultad, responde, aprende del error y guarda la partida cuando quieras.
+          Hay <strong id="n-total">80</strong> preguntas en el banco.
+        </p>
         <label class="small">¿Cuántas preguntas quieres en esta ronda?</label>
         <select id="amount">
           <option value="8">8 — partida rápida</option>
@@ -35,9 +40,18 @@
           <option value="80">80 — casi todas</option>
         </select>
         <div class="grid-3" style="margin-top:16px">
-          <button class="diff-card btn-facil" id="btn-facil" style="color:#062015"><h3>Fácil</h3><p id="n-facil">definiciones</p></button>
-          <button class="diff-card btn-medio" id="btn-medio" style="color:#062015"><h3>Medio</h3><p id="n-medio">relaciones</p></button>
-          <button class="diff-card btn-dificil" id="btn-dificil"><h3>Difícil</h3><p id="n-dificil">detalle</p></button>
+          <button class="diff-card btn-facil" id="btn-facil" style="color:#062015">
+            <h3>Fácil</h3>
+            <p id="n-facil">definiciones</p>
+          </button>
+          <button class="diff-card btn-medio" id="btn-medio" style="color:#062015">
+            <h3>Medio</h3>
+            <p id="n-medio">relaciones</p>
+          </button>
+          <button class="diff-card btn-dificil" id="btn-dificil">
+            <h3>Difícil</h3>
+            <p id="n-dificil">detalle</p>
+          </button>
         </div>
         <div class="row">
           <button id="btn-mixto">Mezcla de niveles</button>
@@ -47,6 +61,7 @@
         </div>
       </div>
     </section>
+
     <section id="how" class="screen">
       <div class="card">
         <h2>Cómo se juega</h2>
@@ -54,23 +69,66 @@
           <li>Elige dificultad. Las preguntas salen en orden aleatorio.</li>
           <li>Fácil = 5 pts, medio = 10, difícil = 15. Las rachas desbloquean mensajes.</li>
           <li>Si te equivocas, verás la respuesta correcta, una explicación y un botón <em>Ver más del tema</em>.</li>
-          <li><strong>Pausar</strong> guarda la partida en este navegador. No necesita internet.</li>
+          <li><strong>Pausar</strong> guarda la partida en este navegador (localStorage). No necesita internet.</li>
           <li>Al final verás tu porcentaje y la lista de temas a repasar.</li>
         </ul>
         <div class="row"><button id="btn-home3">Volver</button></div>
       </div>
     </section>
+
     <section id="temario" class="screen">
       <div class="card temario">
         <h2>Temario Biología 1</h2>
-        <details open><summary>Unidad 1. Introducción a la Biología</summary><ul><li>Ciencia, método científico, historia</li><li>Ramas, niveles, características del ser vivo</li></ul></details>
-        <details><summary>Unidad 2. Biología molecular</summary><ul><li>Bioelementos, agua, biomoléculas, Plato del Bien Comer</li></ul></details>
-        <details><summary>Unidad 3. Biología celular</summary><ul><li>Teoría celular, organelos, fotosíntesis, respiración, mitosis y meiosis</li></ul></details>
-        <details><summary>Unidad 4. Genética</summary><ul><li>Mendel, mutaciones, alteraciones cromosómicas, síndromes</li></ul></details>
-        <details><summary>Unidad 5. Biodiversidad</summary><ul><li>Evolución, virus, taxonomía, cinco reinos</li></ul></details>
+        <details open>
+          <summary>Unidad 1. Introducción a la Biología</summary>
+          <ul>
+            <li>1.1 Ciencia y tipos de ciencias · 1.1.1 Método científico</li>
+            <li>1.2 Concepto e historia de la Biología</li>
+            <li>1.3 Relación con otras ciencias</li>
+            <li>1.4 Ramas · 1.5 Niveles de organización</li>
+            <li>1.6 Características del ser vivo · 1.7 Principios unificadores</li>
+          </ul>
+        </details>
+        <details>
+          <summary>Unidad 2. Biología molecular</summary>
+          <ul>
+            <li>2.1 Bioelementos</li>
+            <li>2.2 Compuestos inorgánicos (agua, sales, gases)</li>
+            <li>2.3 Compuestos orgánicos (carbohidratos, lípidos, proteínas, nucleótidos, vitaminas)</li>
+            <li>2.4 Nutrimentos y Plato del Bien Comer</li>
+          </ul>
+        </details>
+        <details>
+          <summary>Unidad 3. Biología celular</summary>
+          <ul>
+            <li>3.1 Teoría celular · 3.2 Procariotas y eucariotas</li>
+            <li>3.3 Membrana, citoplasma, organelos, núcleo</li>
+            <li>3.4 Fisiología: bioenergética, fotosíntesis, respiración, síntesis de proteínas, ciclo celular, mitosis y meiosis, gametogénesis</li>
+          </ul>
+        </details>
+        <details>
+          <summary>Unidad 4. Genética</summary>
+          <ul>
+            <li>4.1 Conceptos básicos · 4.2 Herencia mendeliana</li>
+            <li>4.3 Alteraciones genéticas · 4.4 Mutaciones · 4.5 Alteraciones cromosómicas</li>
+            <li>4.6 Síndromes (Down, Turner, Klinefelter, Patau, Edwards, cri du chat, etc.)</li>
+          </ul>
+        </details>
+        <details>
+          <summary>Unidad 5. Biodiversidad</summary>
+          <ul>
+            <li>5.1 Evolución · 5.2 Diversidad · 5.3 Virus</li>
+            <li>5.4 Taxonomía clásica</li>
+            <li>5.5 Reinos: Monera, Protista, Fungi, Plantae y Animalia</li>
+          </ul>
+        </details>
+        <p style="margin-top:12px;color:var(--muted);font-size:.85rem">
+          Basado en el temario de clase (libro Trillas, Biología. La ciencia de la vida / Bachillerato).
+        </p>
         <div class="row"><button id="btn-home4">Volver</button></div>
       </div>
     </section>
+
     <section id="play" class="screen">
       <div class="hud">
         <span class="pill" id="progress-label">1 / 10</span>
@@ -91,11 +149,14 @@
         </div>
       </div>
     </section>
+
     <section id="paused" class="screen">
       <div class="card paused-box">
         <div class="fun">⏸️</div>
         <h2>Partida en pausa</h2>
-        <p style="color:var(--muted);margin:8px 0 16px">Tu avance quedó guardado en este navegador.</p>
+        <p style="color:var(--muted);margin:8px 0 16px">
+          Tu avance quedó guardado en este navegador. Puedes cerrar la pestaña y seguir después.
+        </p>
         <div class="row" style="justify-content:center">
           <button id="btn-resume">Reanudar</button>
           <button id="btn-quit" class="btn-ghost">Ir al menú (se conserva)</button>
@@ -103,6 +164,7 @@
         </div>
       </div>
     </section>
+
     <section id="result" class="screen">
       <div class="card">
         <div class="fun" id="res-emoji">🌟</div>
@@ -117,8 +179,11 @@
       </div>
     </section>
   </div>
+
   <div id="toast" class="toast"></div>
-  <script src="js/questions.js"></script>
+
+  <script src="js/questions-a.js"></script>
+  <script src="js/questions-b.js"></script>
   <script src="js/game.js"></script>
 </body>
 </html>
