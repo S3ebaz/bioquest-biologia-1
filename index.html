@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="BioQuest: juego de preguntas de Biología 1. Funciona sin conexión." />
+  <title>BioQuest — Biología 1</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>" />
+</head>
+<body>
+  <div class="app">
+    <header class="top">
+      <div class="brand">
+        <div class="logo">🧬</div>
+        <div>
+          <h1>BioQuest</h1>
+          <div style="font-size:.78rem;color:var(--muted)">Biología 1 · Bachillerato</div>
+        </div>
+      </div>
+      <span class="badge-off">Sin conexión ✓</span>
+    </header>
+    <section id="home" class="screen active">
+      <div class="card hero">
+        <div class="fun">🌱 🔬 🧫</div>
+        <h2>Entrena tu cerebro celular</h2>
+        <p>Preguntas aleatorias del temario de Biología 1 (unidades 1 a 5). Elige dificultad, responde, aprende del error y guarda la partida cuando quieras. Hay <strong id="n-total">80</strong> preguntas en el banco.</p>
+        <label class="small">¿Cuántas preguntas quieres en esta ronda?</label>
+        <select id="amount">
+          <option value="8">8 — partida rápida</option>
+          <option value="10" selected>10 — recomendado</option>
+          <option value="15">15 — práctica</option>
+          <option value="20">20 — desafío</option>
+          <option value="40">40 — maratón</option>
+          <option value="80">80 — casi todas</option>
+        </select>
+        <div class="grid-3" style="margin-top:16px">
+          <button class="diff-card btn-facil" id="btn-facil" style="color:#062015"><h3>Fácil</h3><p id="n-facil">definiciones</p></button>
+          <button class="diff-card btn-medio" id="btn-medio" style="color:#062015"><h3>Medio</h3><p id="n-medio">relaciones</p></button>
+          <button class="diff-card btn-dificil" id="btn-dificil"><h3>Difícil</h3><p id="n-dificil">detalle</p></button>
+        </div>
+        <div class="row">
+          <button id="btn-mixto">Mezcla de niveles</button>
+          <button class="btn-ghost" id="btn-continue" style="display:none">▶ Continuar partida</button>
+          <button class="btn-ghost" id="btn-temario">Temario</button>
+          <button class="btn-ghost" id="btn-how">Cómo se juega</button>
+        </div>
+      </div>
+    </section>
+    <section id="how" class="screen">
+      <div class="card">
+        <h2>Cómo se juega</h2>
+        <ul style="margin:12px 0 0 18px;color:var(--muted)">
+          <li>Elige dificultad. Las preguntas salen en orden aleatorio.</li>
+          <li>Fácil = 5 pts, medio = 10, difícil = 15. Las rachas desbloquean mensajes.</li>
+          <li>Si te equivocas, verás la respuesta correcta, una explicación y un botón <em>Ver más del tema</em>.</li>
+          <li><strong>Pausar</strong> guarda la partida en este navegador. No necesita internet.</li>
+          <li>Al final verás tu porcentaje y la lista de temas a repasar.</li>
+        </ul>
+        <div class="row"><button id="btn-home3">Volver</button></div>
+      </div>
+    </section>
+    <section id="temario" class="screen">
+      <div class="card temario">
+        <h2>Temario Biología 1</h2>
+        <details open><summary>Unidad 1. Introducción a la Biología</summary><ul><li>Ciencia, método científico, historia</li><li>Ramas, niveles, características del ser vivo</li></ul></details>
+        <details><summary>Unidad 2. Biología molecular</summary><ul><li>Bioelementos, agua, biomoléculas, Plato del Bien Comer</li></ul></details>
+        <details><summary>Unidad 3. Biología celular</summary><ul><li>Teoría celular, organelos, fotosíntesis, respiración, mitosis y meiosis</li></ul></details>
+        <details><summary>Unidad 4. Genética</summary><ul><li>Mendel, mutaciones, alteraciones cromosómicas, síndromes</li></ul></details>
+        <details><summary>Unidad 5. Biodiversidad</summary><ul><li>Evolución, virus, taxonomía, cinco reinos</li></ul></details>
+        <div class="row"><button id="btn-home4">Volver</button></div>
+      </div>
+    </section>
+    <section id="play" class="screen">
+      <div class="hud">
+        <span class="pill" id="progress-label">1 / 10</span>
+        <span class="pill" id="score-label">Puntos: 0</span>
+        <span class="pill" id="streak-label">Racha: —</span>
+      </div>
+      <div class="bar"><span id="bar-fill"></span></div>
+      <div class="card">
+        <div class="meta" id="q-meta"></div>
+        <div class="question" id="q-text"></div>
+        <div class="options" id="options"></div>
+        <div id="feedback" class="feedback" style="display:none"></div>
+        <div id="more-box" class="more"></div>
+        <div class="footer-actions">
+          <button id="btn-more" class="btn-ghost" style="display:none">Ver más del tema</button>
+          <button id="btn-next" style="display:none">Siguiente</button>
+          <button id="btn-pause" class="btn-ghost">Pausar y guardar</button>
+        </div>
+      </div>
+    </section>
+    <section id="paused" class="screen">
+      <div class="card paused-box">
+        <div class="fun">⏸️</div>
+        <h2>Partida en pausa</h2>
+        <p style="color:var(--muted);margin:8px 0 16px">Tu avance quedó guardado en este navegador.</p>
+        <div class="row" style="justify-content:center">
+          <button id="btn-resume">Reanudar</button>
+          <button id="btn-quit" class="btn-ghost">Ir al menú (se conserva)</button>
+          <button id="btn-abandon" class="btn-bad">Borrar partida</button>
+        </div>
+      </div>
+    </section>
+    <section id="result" class="screen">
+      <div class="card">
+        <div class="fun" id="res-emoji">🌟</div>
+        <div class="result-big" id="res-score">0/0</div>
+        <p class="result-msg"><span id="res-pct">0%</span> · <span id="res-points">0 pts</span></p>
+        <p class="result-msg" id="res-msg"></p>
+        <div id="res-fails"></div>
+        <div class="row" style="margin-top:16px">
+          <button id="btn-again">Repetir este nivel</button>
+          <button id="btn-home1" class="btn-ghost">Menú principal</button>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div id="toast" class="toast"></div>
+  <script src="js/questions.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
